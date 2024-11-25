@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabrina Ciaffoni - Pastelería</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #AFEEEE; /* Turquesa Pastel */
+            color: #000000;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 15px;
+            cursor: pointer;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .banner {
+            background: url('banner.jpg') no-repeat center center/cover;
+            height: 400px;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .banner h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .about, .history, .contact, .products {
+            margin-bottom: 40px;
+            display: none;
+        }
+
+        .about p, .history p, .contact p, .products p {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .about img {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .history img {
+            width: 150px; /* Ajusta el valor según el tamaño que desees */
+            height: auto; /* Mantiene la proporción original de la imagen */
+            border-radius: 12px;
+        }
+
+        .products .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .products .product-card {
+            width: calc(33.33% - 20px);
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .products .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .products .product-card img {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 8px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 15px;
+            position: relative;
+            border: 2px solid #000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+
+        .modal-content::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 2px solid #000;
+            border-radius: 5px;
+        }
+
+        .close {
+            color: #000;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sabrina Ciaffoni - Pastelería</h1>
+    </header>
+
+    <nav>
+        <a onclick="showSection('about')">Sobre Nosotros</a>
+        <a onclick="showSection('history')">Historia</a>
+        <a onclick="showSection('products')">Productos</a>
+        <a onclick="showSection('contact')">Contacto</a>
+    </nav>
+
+    <section class="banner">
+        <div>
+            <h1>Delicias Dulces para Toda Ocasión</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="about" id="about">
+            <h2>Sobre Nosotros</h2>
+            <p>En Sabrina Ciaffoni, somos apasionados por crear pasteles y postres excepcionales que harán que tus eventos sean aún más especiales. Con ingredientes de alta calidad y recetas tradicionales, cada creación refleja nuestro compromiso con la calidad y la innovación.</p>
+            <!-- Imagen dentro de la sección "Sobre Nosotros" -->
+            <img src="sa.jfif.jpg" alt="Nuestra pastelería">
+        </section>
+
+        <!-- Sección de Historia -->
+        <section class="history" id="history">
+            <h2>Historia</h2>
+            <p> Me llamo Sabrina Ciaffonni ,nací en una hermosa ciudad llamada Toronto, ubicada en Canada, pero mi infancia transcurrió en San Juan, una maravillosa 
+		    ciudad de Argentina. Pero algo dentro de mí sabía que España, mi futuro en el mundo de la hostelería sería brillante y así es como fue.</p>
+            <p>A lo largo de los años, hemos perfeccionado nuestras recetas y expandido nuestro menú, creando una experiencia única para nuestros clientes. Cada pastel que elaboramos tiene una historia, y nos sentimos orgullosos de ser parte de las celebraciones más especiales de nuestros clientes.</p>
+            <!-- Imagen de la historia de la pastelería -->
+            <img src="sabrina.jpg" alt="Historia de la pastelería">
+        </section>
+
+        <!-- Sección de Productos -->
+        <section class="products" id="products">
+            <h2>Productos</h2>
+            <p>Descubre nuestros deliciosos productos:</p>
+            <div class="product-list">
+                <div class="product-card" onclick="openModal('modal1')">
+                    <img src="product1.jpg" alt="Cafes">
+                    <p>Cafes</p>
+                </div>
+                <div class="product-card" onclick="openModal('modal2')">
+                    <img src="product2.jpg" alt="Tartas">
+                    <p>Tartas</p>
+                </div>
+                <div class="product-card" onclick="openModal('modal3')">
+                    <img src="product3.jpg" alt="Repostería">
+                    <p>Repostería</p>
+                </div>
+                <div class="product-card" onclick="openModal('modal4')">
+                    <img src="product4.jpg" alt="Desayunos">
+                    <p>Desayunos</p>
+                </div>
+                <div class="product-card" onclick="openModal('modal5')">
+                    <img src="product5.jpg" alt="Smothies">
+                    <p>Smothies</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section class="contact" id="contact">
+            <h3>Contacto</h3>
+            <p>Si tienes alguna pregunta o deseas hacer un pedido, no dudes en contactarnos:</p>
+            <p>Teléfono: +34 697695160</p>
+            <p>Email: sabricffn@gmail.com</p>
+            <p>Dirección: Av.Cañito Bazán 2 , Córdoba</p>
+        </section>
+    </div>
+
+    <!-- Modales para cada producto -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Cafes</h2>
+            <img src="product1.jpg" alt="Cafes">
+            <p>Descripción del producto: Cafés de alta calidad, desde espresso hasta capuchinos.</p>
+            <button onclick="makeOrder('Cafes')">Hacer Pedido</button>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Tartas</h2>
+            <img src="product2.jpg" alt="Tartas">
+            <p>Descripción del producto: Tartas de diferentes sabores, perfectas para cualquier ocasión.</p>
+            <button onclick="makeOrder('Tartas')">Hacer Pedido</button>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Repostería</h2>
+            <img src="product3.jpg" alt="Repostería">
+            <p>Descripción del producto: Deliciosos postres y repostería para satisfacer tu antojo.</p>
+            <button onclick="makeOrder('Repostería')">Hacer Pedido</button>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h2>Desayunos</h2>
+            <img src="product4.jpg" alt="Desayunos">
+            <p>Descripción del producto: Desayunos completos y saludables para empezar tu día con energía.</p>
+            <button onclick="makeOrder('Desayunos')">Hacer Pedido</button>
+        </div>
+    </div>
+
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal5')">&times;</span>
+            <h2>Smothies</h2>
+            <img src="product5.jpg" alt="Smothies">
+            <p>Descripción del producto: Bebidas frescas y nutritivas para refrescarte en cualquier momento.</p>
+            <button onclick="makeOrder('Smothies')">Hacer Pedido</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Sabrina Ciaffoni - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.container > section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function makeOrder(productName) {
+            alert('Pedido para ' + productName + ' realizado. Nos pondremos en contacto contigo pronto.');
+        }
+
+        // Mostrar la sección "Sobre Nosotros" por defecto al cargar la página
+        window.onload = function() {
+            showSection('about');
+        };
+    </script>
+</body>
+</html>
